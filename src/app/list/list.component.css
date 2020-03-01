@@ -1,0 +1,50 @@
+table,th,td
+{
+    border: 1px solid;
+    text-align: center;
+    
+}
+
+th
+{
+    background-color: white;
+    color: black;
+}
+
+table
+{
+    border-collapse: collapse;
+}
+
+td
+{
+    width: 150px;
+    height: 40px;
+}
+
+.Black
+{
+    color: black;
+}
+
+
+#parent
+{
+    height: 500vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background-color: darkslategray;
+    color: floralwhite;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.EditDiv
+{
+    display: flex;
+}
+
+.UpdateDetails
+{
+    margin-left: 20px;
+}
