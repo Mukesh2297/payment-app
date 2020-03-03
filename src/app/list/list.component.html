@@ -31,19 +31,19 @@ Price: <input type="number" class="Black" #userprice><br><br>
 <div [ngSwitch]="SearchValue">
 
 <div *ngSwitchCase="'Phone No'"><br>
-    Phone No: <input type="number" class="Black" (keyup)="Search($event)">
+    Phone No: <input type="number" [(ngModel)]="textboxValue" class="Black">
 </div>
 
 <div *ngSwitchCase="'CreditCard No'"><br>
-    CreditCard No: <input type="number" class="Black">
+    CreditCard No: <input type="number" [(ngModel)]="textboxValue" class="Black">
 </div>
 
 <div *ngSwitchCase="'Price'"><br>
-    Price: <input type="number" class="Black">
+    Price: <input type="number" [(ngModel)]="textboxValue" class="Black">
 </div>
 
 <div *ngSwitchCase="'Name'"><br>
-    Name: <input type="text" class="Black" (keyup)="Search($event)">
+    Name: <input type="text" [(ngModel)]="textboxValue" class="Black">
 </div>
 
 </div>
@@ -53,7 +53,7 @@ Price: <input type="number" class="Black" #userprice><br><br>
 
 <h3><u><i>Table Details</i></u></h3><br>
 
-<div class="table" *ngIf="ResultArr.length==0; else SearchResult">
+<div class="table">
 
 <table>
 
@@ -66,7 +66,7 @@ Price: <input type="number" class="Black" #userprice><br><br>
        <th>Edit / Delete</th>
    </tr>
 
-   <tr *ngFor="let SearchVal of tableArr;index as indexval">
+   <tr *ngFor="let SearchVal of tableArr | filterArray: SearchValue : textboxValue ;index as indexval">
     <td> {{indexval+1}} </td>
     <td>{{SearchVal.name | CamelCase }}</td>
     <td>{{SearchVal.phno}}</td>
@@ -81,37 +81,6 @@ Price: <input type="number" class="Black" #userprice><br><br>
 </table>
 
 </div>
-
-<ng-template #SearchResult>
-
-    <table>
-
-        <tr>
-            <th>Serial No</th>
-            <th>Name</th>
-            <th>Ph No</th>
-            <th>CC No</th>
-            <th>Price</th>
-            <th>Edit / Delete</th>
-        </tr>
-     
-        <tr *ngFor="let SearchVal of ResultArr;index as indexval">
-         <td> {{indexval+1}} </td>
-         <td>{{SearchVal.name | CamelCase }}</td>
-         <td>{{SearchVal.phno}}</td>
-         <td>{{SearchVal.creditnum}}</td>
-         <td> {{SearchVal.price | currency}} </td>
-         <td>&nbsp;<input type="button" class="btn btn-warning" [disabled]="EditIsDisabled" value="Edit" (click)="Edit(indexval)"> &nbsp; 
-             <input type="button" class="btn btn-danger" value="Delete" (click) = "Delete(indexval)"> </td>
-     
-     
-        </tr>
-     
-     </table>
-     
-
-
-</ng-template>
 
 <br><br>
 

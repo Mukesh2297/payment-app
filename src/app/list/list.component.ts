@@ -12,7 +12,8 @@ export class ListComponent implements OnInit {
   tempArr = [];
   EditStatus:boolean = false;
   EditIsDisabled:boolean;
-  SearchValue:number|string="None";
+  SearchValue;
+  texboxValue;
   ResultArr=[];
   price;
 
@@ -20,6 +21,8 @@ export class ListComponent implements OnInit {
 
     this.tableArr=this.List.TableArray;
     this.tempArr = this.List.tempArr;  
+    this.SearchValue=this.List.SearchValue;
+    this.texboxValue=this.List.texboxValue;
     
    }
 
@@ -42,6 +45,8 @@ export class ListComponent implements OnInit {
   Delete(ind)
   {
     this.List.Delete(ind);
+    this.SearchValue = this.List.SearchValue;
+  
   }
 
   Update(name,phno,ccno,price)
@@ -59,7 +64,7 @@ export class ListComponent implements OnInit {
       {
         return Obj.name.toLowerCase().includes(event.target.value);
       })
-      console.log(this.ResultArr);
+      //console.log(this.ResultArr);
     }
     
     
@@ -71,7 +76,19 @@ export class ListComponent implements OnInit {
         const phnoString = String(Obj.phno);
         return phnoString.includes(event.target.value);
       })
-      console.log(this.ResultArr);
+      //console.log(this.ResultArr);
+
+    }
+
+    else if(this.SearchValue=="Price")
+    {
+    
+    this.ResultArr=this.tableArr.filter(Obj=>
+      {
+        const PriceString = String(Obj.price);
+        return PriceString.includes(event.target.value);
+      })
+      //console.log(this.ResultArr);
 
     }
 

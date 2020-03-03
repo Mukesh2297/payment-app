@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { CamelCase } from './Pipes/UpperCase/CamelCase.pipe';
+import { FilterPipe } from './Pipes/filter/filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    CamelCase
+    CamelCase,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,8 @@ export class ListService {
   tempArr=[];
 
   EditIndex:number;
+  SearchValue:number|string="None";
+  texboxValue:number|string;
 
 
   constructor() { }
@@ -54,6 +56,8 @@ export class ListService {
 
   Delete(ind)
   {
+    this.SearchValue="None";
+    this.texboxValue=null;
     this.TableArray.splice(ind,1);
   }
 
