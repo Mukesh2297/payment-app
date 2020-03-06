@@ -13,16 +13,18 @@ export class ListComponent implements OnInit {
   EditStatus:boolean = false;
   EditIsDisabled:boolean;
   SearchValue;
-  texboxValue;
+  textboxValue;
   ResultArr=[];
   price;
+  creditLength;
+  phnoLength;
 
   constructor(public List:ListService) {
 
     this.tableArr=this.List.TableArray;
     this.tempArr = this.List.tempArr;  
     this.SearchValue=this.List.SearchValue;
-    this.texboxValue=this.List.texboxValue;
+    this.textboxValue=this.List.texboxValue;
     
    }
 
@@ -31,7 +33,26 @@ export class ListComponent implements OnInit {
 
   AddUser(uname,ccno,phno,price)
   {
-    this.List.AddUser(uname,ccno,phno,price);
+
+    if(this.creditLength.toString().length==16 && this.phnoLength.toString().length==10)
+    {this.List.AddUser(uname,ccno,phno,price)}
+
+    else
+    {
+
+      if(this.creditLength.toString().length < 16 || this.creditLength.toString().length > 16 )
+      {
+        alert("Please enter valid credit card number");
+      }
+
+      else if(this.phnoLength.toString().length < 10 || this.creditLength.toString().length > 10 )
+      {
+        alert("Please enter valid phone number");
+      }
+
+
+    }
+    
 
   }
 
@@ -53,48 +74,6 @@ export class ListComponent implements OnInit {
   {
     this.EditIsDisabled=false;
    this.List.Update(name,phno,ccno,price);
-  }
-
-  Search(event)
-  {
-   
-    if(this.SearchValue=="Name" && event.target.value!= " ")
-    {
-    this.ResultArr=this.tableArr.filter(Obj=>
-      {
-        return Obj.name.toLowerCase().includes(event.target.value);
-      })
-      //console.log(this.ResultArr);
-    }
-    
-    
-    else if(this.SearchValue=="Phone No" && event.target.value!=NaN)
-    {
-    
-    this.ResultArr=this.tableArr.filter(Obj=>
-      {
-        const phnoString = String(Obj.phno);
-        return phnoString.includes(event.target.value);
-      })
-      //console.log(this.ResultArr);
-
-    }
-
-    else if(this.SearchValue=="Price")
-    {
-    
-    this.ResultArr=this.tableArr.filter(Obj=>
-      {
-        const PriceString = String(Obj.price);
-        return PriceString.includes(event.target.value);
-      })
-      //console.log(this.ResultArr);
-
-    }
-
-
-
-    
   }
 
 }

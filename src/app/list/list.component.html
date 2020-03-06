@@ -6,8 +6,8 @@
 <br>
 
 Username: <input type="text" class="Black" #username> <br><br>
-CreditCard Number: <input type="number" class="Black" #userccno> <br><br>
-Phone Number: <input type="number" class="Black" #userphno> <br><br>
+CreditCard Number: <input type="number" [(ngModel)]="creditLength" class="Black" #userccno><br><br>
+Phone Number: <input type="number" [(ngModel)]="phnoLength" class="Black" #userphno> <br><br>
 Price: <input type="number" class="Black" #userprice><br><br>
 
 
@@ -70,7 +70,7 @@ Price: <input type="number" class="Black" #userprice><br><br>
     <td> {{indexval+1}} </td>
     <td>{{SearchVal.name | CamelCase }}</td>
     <td>{{SearchVal.phno}}</td>
-    <td>{{SearchVal.creditnum}}</td>
+    <td>{{SearchVal.creditnum | creditFilter}}</td>
     <td> {{SearchVal.price | currency}} </td>
     <td>&nbsp;<input type="button" class="btn btn-warning" [disabled]="EditIsDisabled" value="Edit" (click)="Edit(indexval)"> &nbsp; 
         <input type="button" class="btn btn-danger" value="Delete" (click) = "Delete(indexval)"> </td>

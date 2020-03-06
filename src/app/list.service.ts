@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
 export class ListService {
 
   TableArray=[
-    {name:"mukesh",creditnum:2345,phno:9677078400,price:20},
-    {name:"sandy",creditnum:6789,phno:9952050467,price:10}
+    {name:"mukesh",creditnum:1234567812345678,phno:9677078400,price:20},
+    {name:"sandy",creditnum:9876543298765432,phno:9952050467,price:10}
   ];
 
   tempArr=[];
@@ -17,7 +17,7 @@ export class ListService {
   SearchValue:number|string="None";
   texboxValue:number|string;
 
-
+  
   constructor() { }
 
   AddUser(uname,ccno,phno,price)
@@ -27,7 +27,7 @@ export class ListService {
     {
       let userDetails={name:"",creditnum:0,phno:0,price:0}
       userDetails.name=uname;
-      userDetails.creditnum=parseInt(ccno);
+      userDetails.creditnum=parseInt(ccno);      
       userDetails.phno=parseInt(phno);
       userDetails.price=parseInt(price);
       this.TableArray.push(userDetails);

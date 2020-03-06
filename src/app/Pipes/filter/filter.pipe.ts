@@ -7,7 +7,7 @@ export class FilterPipe implements PipeTransform {
 
   ResultArr;
 
-  transform(filterArray:[], searchVal,textboxValue){
+  transform(filterArray:any[], searchVal,textboxValue){
     if(searchVal=="Name" && textboxValue != null)
     {
     this.ResultArr=filterArray.filter((ListItem:any)=>
